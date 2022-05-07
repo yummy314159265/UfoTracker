@@ -1,0 +1,14 @@
+{
+  "name": "b5c7ec81553dc676",
+  "main": "b5c7ec81553dc676@161.js",
+  "version": "161.0.0",
+  "homepage": "https://observablehq.com/d/b5c7ec81553dc676",
+  "author": {
+    "name": "Rodin Grajo",
+    "url": "https://observablehq.com/@0fc49e5e9d31eef7"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
