@@ -32,4 +32,4 @@ Sightings.init(
   }
 );
 
-module.exports = Book;
+module.exports = Sightings;

@@ -1,6 +1,6 @@
 const Sightings = require('./Sightings');
 const State = require('./State');
-
+const Users = require('./Users');
 
 Sightings.hasOne(State, {
   foreignKey: 'State_id',
@@ -24,4 +24,4 @@ State.belongsTomany(Sightings, {
 
 
 
-module.exports = {Sightings , State};
+module.exports = {Sightings, State, Users};
