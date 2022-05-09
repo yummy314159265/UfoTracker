@@ -6,8 +6,8 @@ Pan and zoom, or click to zoom into a particular state using [*zoom*.transform](
 
 function _chart(d3,topojson,us,path)
 {
-  const width = 800;
-  const height = 500;
+  const width = 1120;
+  const height = 700;
 
   const zoom = d3.zoom()
       .scaleExtent([1, 8])
