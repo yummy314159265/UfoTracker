@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yummy314159265/Project2#readme",
   "dependencies": {
+    "@observablehq/runtime": "^4.19.0",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.3",
     "d3": "^7.4.4",
