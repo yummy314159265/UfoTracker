@@ -1,7 +1,7 @@
-const router = require('express').router();
+const router = require('express').Router();
 
 router.get('/', async (req, res) => {
-    res.render();
+    res.render('map');
 });
 
 module.exports = router;
