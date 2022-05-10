@@ -1,5 +1,22 @@
 {{!-- full map view --}}
 
+<div id="sightings-modal" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+        <p>
+            {{log this}}
+            {{sightings.city}}
+        </p>
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<script src="/js/sightings-modal.js"></script>
+
 <script type="module">
 
     import define from "/js/us_map/index.js";

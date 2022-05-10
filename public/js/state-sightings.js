@@ -9,6 +9,10 @@ const stateSightingsHandler = async (event) => {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     });
+
+    const modal = document.getElementById('sightings-modal');
+    
+    setTimeout(() => modal.classList.add('is-active'), 500);
 }
 
 export { stateSightingsHandler }

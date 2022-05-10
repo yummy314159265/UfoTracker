@@ -9,14 +9,12 @@ router.get('/:state', async (req, res) => {
         }
     });
 
-    const sightings = dbSightingsData.map((sighting) => {
-      sighting.get({ plain: true })
-    });
+    const sightings = dbSightingsData.map((sighting) => sighting.get({ plain: true }));
 
-    res.render('sighting', {
-      sightings
+    res.render('map', {
+      sightings: sightings[0]
     })
-    
+
   } catch(err) {
     console.error(err);
     res.status(500).json(err)
