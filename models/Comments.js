@@ -12,6 +12,10 @@ Comments.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
