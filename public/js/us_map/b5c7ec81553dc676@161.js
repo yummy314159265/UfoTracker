@@ -1,13 +1,9 @@
-function _1(md){return(
-md`# Zoom to Bounding Box
-
-Pan and zoom, or click to zoom into a particular state using [*zoom*.transform](https://github.com/d3/d3-zoom/blob/master/README.md#zoom_transform) transitions. The bounding box is computed using [*path*.bounds](https://github.com/d3/d3-geo/blob/master/README.md#path_bounds).`
-)}
+import { stateHandler } from '../states.js'
 
 function _chart(d3,topojson,us,path)
 {
-  const width = 1120;
-  const height = 700;
+  const width = 975;
+  const height = 610;
 
   const zoom = d3.zoom()
       .scaleExtent([1, 8])
@@ -61,6 +57,8 @@ function _chart(d3,topojson,us,path)
         .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
       d3.pointer(event, svg.node())
     );
+
+    stateHandler(event);
   }
 
   function zoomed(event) {
@@ -73,10 +71,8 @@ function _chart(d3,topojson,us,path)
 }
 
 
-function _3(md){return(
-md`## Annex
-
-Thanks to [John Guerra](/@john-guerra) for suggestions.`
+function _1(md){return(
+md`Map by Mike Bostock [Zoom to Bounding Box](https://observablehq.com/@d3/zoom-to-bounding-box)`
 )}
 
 function _path(d3){return(
@@ -102,9 +98,8 @@ export default function define(runtime, observer) {
     ["states-albers-10m.json", {url: new URL("./files/75faaaca1f1a4f415145b9db520349a3a0b93a53c1071346a30e6824586a7c251f45367d9262ed148b7a2b5c2694aa7703f3ac88051abc65066fd0074fdf9c9e", import.meta.url), mimeType: null, toString}]
   ]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
-  // main.variable(observer()).define(["md"], _1);
   main.variable(observer("chart")).define("chart", ["d3","topojson","us","path"], _chart);
-  // main.variable(observer()).define(["md"], _3);
+  main.variable(observer()).define(["md"], _1);
   main.variable(observer("path")).define("path", ["d3"], _path);
   main.variable(observer("us")).define("us", ["FileAttachment"], _us);
   main.variable(observer("topojson")).define("topojson", ["require"], _topojson);

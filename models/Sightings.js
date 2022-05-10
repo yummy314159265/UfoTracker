@@ -5,22 +5,32 @@ class Sightings extends Model {}
 
 Sightings.init(
   {
-    Sightings_id: {
-      type: DataTypes.TEXT,
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    state: {
+    date_time: {
       type: DataTypes.TEXT
     },
-    summary: {
+    city: {
+      type: DataTypes.TEXT
+    },
+    state_id: {
       type: DataTypes.TEXT
     },
     shape: {
       type: DataTypes.TEXT
     },
-    date_time: {
-      type: DataTypes.INTEGER
+    duration: {
+      type: DataTypes.TEXT
+    },
+    summary: {
+      type: DataTypes.TEXT
+    },
+    date_posted: {
+      type: DataTypes.TEXT
     }
   },
   {
@@ -28,7 +38,7 @@ Sightings.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Sightings'
+    modelName: 'sightings'
   }
 );
 
