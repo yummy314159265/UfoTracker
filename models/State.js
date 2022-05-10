@@ -6,23 +6,26 @@ class State extends Model {}
 State.init(
   {
     id: {
-      type: DataTypes.TEXT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    State_name: {
-      type: DataTypes.TEXT,
+    state_name: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    
+    state_abbr: {
+      type: DataTypes.STRING(2),
+      allowNull: false,
+    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'State',
+    modelName: 'state',
   }
 );
 
