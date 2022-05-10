@@ -3,13 +3,13 @@ const { Sightings } = require('../../models');
 
 router.get('/:state', async (req, res) => {
   try {
-    const sightingsData = await Sightings.findAll({
+    const dbSightingsData = await Sightings.findAll({
         where: {
             state_id: req.params.state,
         }
     });
-    console.log(sightingsData)
-    res.status(200).json(sightingsData);
+
+    res.status(200).json(dbSightingsData);
   } catch(err) {
     console.error(err);
     res.status(500).json(err)

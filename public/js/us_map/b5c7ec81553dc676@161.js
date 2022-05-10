@@ -1,4 +1,4 @@
-import { stateHandler } from '../states.js'
+import { stateSightingsHandler } from '../state-sightings.js'
 
 function _chart(d3,topojson,us,path)
 {
@@ -22,14 +22,16 @@ function _chart(d3,topojson,us,path)
     .data(topojson.feature(us, us.objects.states).features)
     .join("path")
       .on("click", clicked)
-      .attr("d", path);
+      .attr("d", path)
+      .attr("class", "js-modal-trigger")
+      .attr("data-target", "sightings-modal");
   
   states.append("title")
       .text(d => d.properties.name);
 
   g.append("path")
       .attr("fill", "none")
-      .attr("stroke", "white")
+      .attr("stroke", "black")
       .attr("stroke-linejoin", "round")
       .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
 
@@ -48,7 +50,7 @@ function _chart(d3,topojson,us,path)
     const [[x0, y0], [x1, y1]] = path.bounds(d);
     event.stopPropagation();
     states.transition().style("fill", null);
-    d3.select(this).transition().style("fill", "red");
+    d3.select(this).transition().style("fill", "#15fc12");
     svg.transition().duration(750).call(
       zoom.transform,
       d3.zoomIdentity
@@ -58,7 +60,7 @@ function _chart(d3,topojson,us,path)
       d3.pointer(event, svg.node())
     );
 
-    stateHandler(event);
+    stateSightingsHandler(event);
   }
 
   function zoomed(event) {
@@ -72,7 +74,7 @@ function _chart(d3,topojson,us,path)
 
 
 function _1(md){return(
-md`Map by Mike Bostock [Zoom to Bounding Box](https://observablehq.com/@d3/zoom-to-bounding-box)`
+md`Map by Mike Bostock: [Zoom to Bounding Box](https://observablehq.com/@d3/zoom-to-bounding-box)`
 )}
 
 function _path(d3){return(

@@ -1,5 +1,22 @@
 {{!-- full map view --}}
 
+<div id="sightings-modal" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+        <p id="time"></p>        
+        <p id="city"></p>
+        <p id="summary"></p>
+        <p id="shape"></p>
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<script src="/js/sightings-modal.js"></script>
+
 <script type="module">
 
     import define from "/js/us_map/index.js";
