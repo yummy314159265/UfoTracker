@@ -13,10 +13,16 @@ body {
 
 .navbar {
     font-family: 'Orbitron', sans-serif;
-    background-color: black;
+    background-color: transparent;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 5px;
+}
+
+.signup-btn, .login-btn{
+    color: black;
+    background-color: #15fc12;
 }
 
 .title {
