@@ -1,27 +1,13 @@
 const Sightings = require('./Sightings');
 const State = require('./State');
 
-
-Sightings.hasOne(State, {
-  foreignKey: 'State_id',
+Sightings.belongsTo(State, {
+  foreignKey: 'state_id',
   onDelete: 'CASCADE'
 });
 
 State.hasMany(Sightings, {
-  foreignKey: 'Sightings_id',
-onDelete: 'CASCADE'
+  foreignKey: 'state_id',
 });
 
-Sightings.belongsTo(State, {
-  foreignKey: 'Sightings_id'
-});
-
-
-State.belongsTomany(Sightings, { 
-  through
-})
-
-
-
-
-module.exports = {Sightings , State};
+module.exports = { Sightings, State };
