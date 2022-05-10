@@ -1,0 +1,32 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+}
+
+.observablehq {
+    background-color: black;
+}
+
+.navbar {
+    font-family: 'Orbitron', sans-serif;
+    background-color: black;
+}
+
+.title {
+    color: #15fc12;
+}
+
+.observablehq p {
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.observablehq--inspect {
+    display: none;
+}

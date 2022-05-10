@@ -7,7 +7,7 @@ class Comments extends Model {}
 Comments.init(
   {
     id: {
-      type: DataTypes.TEXT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,

@@ -18,7 +18,7 @@ Sightings.init(
       type: DataTypes.TEXT
     },
     state_id: {
-      type: DataTypes.TEXT
+      type: DataTypes.STRING(255)
     },
     shape: {
       type: DataTypes.TEXT
