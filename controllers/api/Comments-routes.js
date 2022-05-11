@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     try {
       const commentData = await Comments.findOne({
         where: {
-          body: req.body.body,
+          body: req.body.username,
         },
       });
   
