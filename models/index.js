@@ -1,7 +1,7 @@
-const Sightings = require('./Sightings');
-const State = require('./State');
-const Users = require('./Users');
-const Comments = require('./Comments');
+const Sightings = require('./sightings');
+const State = require('./state');
+const Users = require('./users');
+const Comments = require('./comments');
 
 Sightings.belongsTo(State, {
   foreignKey: 'state_id',
