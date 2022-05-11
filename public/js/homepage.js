@@ -77,8 +77,11 @@ const commentFormHandler = async function(event){
       }
 };
 
-document.querySelector('#comment-submit').addEventListener('submit', commentFormHandler);
-
+document.body.addEventListener('click', (event) => {
+    if (event.target === document.querySelector('#comment-submit')) {
+        commentFormHandler(event);
+    }
+});
 
 previousEl.addEventListener('click', (event) => previousSighting(data, index));
 nextEl.addEventListener('click', (event) => nextSighting(data, index));

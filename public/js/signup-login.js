@@ -49,5 +49,5 @@ document
     .addEventListener('click', signupFormHandler);
   
 document
-    .querySelector('#login-button')
+    .querySelector('#login')
     .setAttribute('style', 'display: none');
