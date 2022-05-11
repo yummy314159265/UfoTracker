@@ -1,9 +1,9 @@
-import { stateSightingsHandler } from '../state-sightings.js'
+import { stateSightingsHandler } from '../homepage.js'
 
 function _chart(d3,topojson,us,path)
 {
-  const width = 975;
-  const height = 610;
+  const width = 1280;
+  const height = 800;
 
   const zoom = d3.zoom()
       .scaleExtent([1, 8])
@@ -72,9 +72,34 @@ function _chart(d3,topojson,us,path)
   return svg.node();
 }
 
-
 function _1(md){return(
 md`Map by Mike Bostock: [Zoom to Bounding Box](https://observablehq.com/@d3/zoom-to-bounding-box)`
+)}
+
+function _comments(html){return(
+  html`
+    <div class="container" id="comments">
+      <div class="field container">
+
+        <div class="control">
+          <textarea class="textarea" placeholder="Leave a comment"></textarea>
+        </div>
+      </div>
+
+      <div class="field is-grouped is-grouped-right container">
+        <div class="control">
+          <button class="button is-link" id="comment-submit">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+
+      <div class="content container" id="comment-list">
+
+      </div>
+    </div>
+  `
 )}
 
 function _path(d3){return(
@@ -106,5 +131,6 @@ export default function define(runtime, observer) {
   main.variable(observer("us")).define("us", ["FileAttachment"], _us);
   main.variable(observer("topojson")).define("topojson", ["require"], _topojson);
   main.variable(observer("d3")).define("d3", ["require"], _d3);
+  main.variable(observer()).define(["html"], _comments);
   return main;
 }

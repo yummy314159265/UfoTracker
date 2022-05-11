@@ -1,5 +1,5 @@
-html {
-    overflow: hidden;
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -12,12 +12,12 @@ body {
 }
 
 .navbar {
-    font-family: 'Orbitron', sans-serif;
     background-color: black;
 }
 
 .title {
     color: #15fc12;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .observablehq p {
@@ -29,4 +29,26 @@ body {
 
 .observablehq--inspect {
     display: none;
+}
+
+.sightings-nav {
+    cursor: pointer;
+    width: fit-content;
+    display: inline;
+}
+
+.field, .content {
+    width: 40%;
+}
+
+.login-input {
+    margin-top: 400px;
+}
+
+#login-button {
+    cursor: pointer;
+}
+
+#comment-list {
+    color: white;
 }
