@@ -15,24 +15,25 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@300&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/stylesheet.css">
 </head>
 
 <body>
 
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+    <nav class="navbar is-fixed-top level" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand level-left">
             <h1 class="title is-1">UFO thing</h1>
         </div>
+        <div class="level-right">
+            <a href="/login" class="title is-4" id="login-button">login / signup</a>
+        </div>
     </nav>
-
 
     <main class="container">
         {{{body}}}
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </body>
 </html>
