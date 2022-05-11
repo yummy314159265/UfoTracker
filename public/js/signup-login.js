@@ -39,7 +39,7 @@ const signupFormHandler = async (event) => {
         }
     }
 };
- 
+
 document
     .querySelector('#login')
     .addEventListener('click', loginFormHandler);
