@@ -27,13 +27,21 @@
             <h1 class="title is-1">UFO thing</h1>
         </div>
         <div class="level-right">
-            <a href="/login" class="title is-4" id="login-button">login / signup</a>
+            {{#if loggedIn}}
+            <a class="title is-4" id="logout">logout</a>
+            {{else}}
+            <a href="/login" class="title is-4" id="login">login / signup</a>
+            {{/if}}
         </div>
     </nav>
 
     <main class="container">
         {{{body}}}
     </main>
+
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 
 </body>
 </html>

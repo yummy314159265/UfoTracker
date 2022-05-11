@@ -96,7 +96,8 @@ function _comments(html){return(
       </div>
 
       <div class="content container" id="comment-list">
-
+        <div>username timestamp</div>
+        <div>comment</div>
       </div>
     </div>
   `

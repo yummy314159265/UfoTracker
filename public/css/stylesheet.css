@@ -46,16 +46,16 @@ body {
     margin-top: 400px;
 }
 
+#login, #logout {
+    cursor: pointer;
+}
+
 #city {
     font-size: 2 rem;
 }
 
 #leave-comment {
     float: right;
-}
-
-#login-button {
-    cursor: pointer;
 }
 
 #comment-list {
