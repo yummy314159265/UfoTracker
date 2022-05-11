@@ -41,11 +41,11 @@ const loginFormHandler = async (event) => {
   };
   
   document
-    .querySelector('#signIn-Up')
-    .addEventListener('#login', loginFormHandler);
+    .querySelector('#login')
+    .addEventListener('click', loginFormHandler);
 
   document
-    .querySelector('#signIn-Up')
-    .addEventListener('#sign-up', signupFormHandler);
+    .querySelector('#sign-up')
+    .addEventListener('click', signupFormHandler);
   
 
