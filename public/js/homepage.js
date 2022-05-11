@@ -57,7 +57,31 @@ const previousSighting = (d) => {
     displaySightingsModal (d);
 }
 
+const commentFormHandler = async function(event){
+    event.preventDefault();
+    const username = document.querySelector('input[name="Comments-username"]').value;
+    const body = ('textarea[name="Comments-body"]').value;
+    if (body) {
+        await fetch('/api/Comments', {
+          method: 'POST',
+          body: JSON.stringify({
+            username,
+            body
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+    
+        document.location.reload();
+      }
+};
+
+document.querySelector('#comment-submit').addEventListener('submit', commentFormHandler);
+
+
 previousEl.addEventListener('click', (event) => previousSighting(data, index));
 nextEl.addEventListener('click', (event) => nextSighting(data, index));
 
+export { commentFormHandler }
 export { stateSightingsHandler }

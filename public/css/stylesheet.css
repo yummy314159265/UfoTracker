@@ -50,6 +50,14 @@ body {
     cursor: pointer;
 }
 
+#city {
+    font-size: 2 rem;
+}
+
+#leave-comment {
+    float: right;
+}
+
 #comment-list {
     color: white;
 }

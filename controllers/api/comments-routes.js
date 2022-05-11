@@ -17,28 +17,25 @@ router.post('/', async (req, res) => {
           res.status(500).json(err);
         }
       });
-    
-      
 
-  router.post('/comments', async (req, res) => {
-    try {
-      const commentData = await Comments.findOne({
-        where: {
-          body: req.body.body,
-        },
-      });
-  
-      if (!commentData) {
-        res
-          .status(400)
-          .json({ message: 'Add a comment' });
-        return;
-      }
-    }catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-      }
+router.post('/comments', async (req, res) => {
+  try {
+    const commentData = await Comments.findOne({
+      where: {
+        body: req.body.username,
+      },
     });
-    
-  
-  module.exports = router;
+
+    if (!commentData) {
+      res
+        .status(400)
+        .json({ message: 'Add a comment' });
+      return;
+    }
+  }catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+});
+
+module.exports = router;
