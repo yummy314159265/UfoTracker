@@ -12,7 +12,8 @@ body {
 }
 
 .navbar {
-    background-color: black;
+    background-color: transparent;
+    padding: 10px;
 }
 
 .title {

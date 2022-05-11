@@ -12,4 +12,4 @@ State.hasMany(Sightings, {
   foreignKey: 'state_id',
 });
 
-module.exports = { Sightings, State };
+module.exports = { Sightings, State, Users, Comments };
