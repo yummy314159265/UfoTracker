@@ -8,6 +8,20 @@ router.get('/:state', async (req, res) => {
             state_id: req.params.state,
         }
     });
+    
+    // req.session.save(() => {
+    //   if (!req.session.sighting) {
+    //     req.session.sighting = {
+    //       state: req.params.state,
+    //       index: 0
+    //     };
+    //   }
+
+    //   res.status(200).json({
+    //     sightings: dbSightingsData,
+    //     cookie: req.session.sighting,
+    //   });
+    // });
 
     res.status(200).json(dbSightingsData);
   } catch(err) {
