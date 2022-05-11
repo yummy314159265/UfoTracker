@@ -1,7 +1,9 @@
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
-    res.render('map');
+    res.render('map', {
+      loggedIn: req.session.loggedIn
+    });
 });
 
 router.get('/login', (req, res) => {
