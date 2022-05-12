@@ -7,10 +7,8 @@ const summaryEl = document.querySelector('#summary');
 const shapeEl = document.querySelector('#shape');
 const nextEl = document.querySelector('#next-sighting');
 const previousEl = document.querySelector('#previous-sighting');
-const submitButtonEl = document.querySelector('#comment-submit');
-const loginButtonEl = document.querySelector('#login-button');
-let index;
-let data;
+let index = 0;
+let sightingData;
 
 const stateSightingsHandler = async (event) => {
     event.preventDefault();
@@ -22,12 +20,13 @@ const stateSightingsHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
     });
 
-    data = await response.json();
+    sightingData = await response.json();
     index = 0;
 
     setTimeout(() => modalEl.classList.add('is-active'), 500);
 
-    displaySightingsModal(data);
+    displaySightingsModal(sightingData);
+    displaySightingComments(sightingData.id);
 }
 
 const displaySightingsModal = (d) => {
@@ -57,24 +56,32 @@ const previousSighting = (d) => {
     displaySightingsModal (d);
 }
 
+const displaySightingComments = () => {
+
+}
+
 const commentFormHandler = async function(event){
     event.preventDefault();
-    const username = document.querySelector('input[name="Comments-username"]').value;
-    const body = ('textarea[name="Comments-body"]').value;
-    if (body) {
-        await fetch('/api/Comments', {
-          method: 'POST',
-          body: JSON.stringify({
-            username,
-            body
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
+
+    const body = document.querySelector('textarea[name="comment-body"]').value;
+
+    if (body && sightingData[index].id) {
+        console.log(body)
+        await fetch('/api/comments', {
+            method: 'POST',
+            body: JSON.stringify({
+                body,
+                sightingId: sightingData[index].id,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
     
-        document.location.reload();
-      }
+        displaySightingComments();
+    } else {
+        console.error('Unable to post comment')
+    }
 };
 
 document.body.addEventListener('click', (event) => {
@@ -83,8 +90,8 @@ document.body.addEventListener('click', (event) => {
     }
 });
 
-previousEl.addEventListener('click', (event) => previousSighting(data, index));
-nextEl.addEventListener('click', (event) => nextSighting(data, index));
+previousEl.addEventListener('click', (event) => previousSighting(sightingData, index));
+nextEl.addEventListener('click', (event) => nextSighting(sightingData, index));
 
 export { commentFormHandler }
 export { stateSightingsHandler }
