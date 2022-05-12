@@ -80,25 +80,23 @@ function _comments(html){return(
   html`
     <div class="container" id="comments">
       <div class="field container">
-
         <div class="control">
-          <textarea class="textarea" placeholder="Leave a comment"></textarea>
-        </div>
-      </div>
-
-      <div class="field is-grouped is-grouped-right container">
-        <div class="control">
-          <button class="button is-link" id="comment-submit">Submit</button>
-        </div>
-        <div class="control">
-          <button class="button is-link is-light">Cancel</button>
+          <textarea class="textarea" name="comment-body" placeholder="Leave a comment"></textarea>
         </div>
       </div>
 
       <div class="content container" id="comment-list">
-        <div>username timestamp</div>
-        <div>comment</div>
       </div>
+
+      <div class="field is-grouped is-grouped-right container">
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+        <div class="control">
+          <button class="button is-link" id="comment-submit">Submit</button>
+        </div>
+      </div>
+
     </div>
   `
 )}
