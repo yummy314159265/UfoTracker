@@ -51,11 +51,27 @@ body {
 }
 
 #city {
-    font-size: 2 rem;
+    font-size: 6 rem;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    background-color: black;
+    color: #15fc12;
+    padding: 16px;
+    
+}
+
+#previous-sighting,#next-sighting {
+    font-size: rem 8;
+    font-weight: bold;
+}
+
+#next-sighting{
+    float: right;
 }
 
 #leave-comment {
-    float: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #comment-list {
