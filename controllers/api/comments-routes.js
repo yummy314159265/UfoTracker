@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const {Comments} = require('../../models');
+const {Comments, Users} = require('../../models');
 const withAuth = require('../../utils/auth');
-
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -13,33 +12,54 @@ router.post('/', withAuth, async (req, res) => {
         sighting_id: req.body.sightingId,
       });
 
-      console.log(commentData)
+      console.log(commentData);
       res.status(200).json(commentData);
+    } else {
+      console.log('Please log in')
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).json(err);
   }
 });
 
-router.post('/comments', async (req, res) => {
+router.get('/:sightingId', async (req, res) => {
   try {
-    const commentData = await Comments.findOne({
-      where: {
-        body: req.body.username,
+    const commentData = await Comments.findAll({
+      include: { 
+        model: Users,
       },
-    });
+      where: {
+        sighting_id: req.params.sightingId
+      },
+    })
 
-    if (!commentData) {
-      res
-        .status(400)
-        .json({ message: 'Add a comment' });
-      return;
-    }
+    console.log(commentData);
+    res.status(200).json(commentData);
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    console.error(err);
+    res.status(500).json(err)
   }
 });
+
+// router.post('/comments', async (req, res) => {
+//   try {
+//     const commentData = await Comments.findOne({
+//       where: {
+//         body: req.body.username,
+//       },
+//     });
+
+//     if (!commentData) {
+//       res
+//         .status(400)
+//         .json({ message: 'Add a comment' });
+//       return;
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;

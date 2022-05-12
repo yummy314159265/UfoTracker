@@ -45,6 +45,8 @@ router.post('/login', async (req, res) => {
 
     console.log(dbUserData)
 
+    console.log(dbUserData.id)
+
     await req.session.save(() => {
       req.session.loggedIn = true;
       req.session.email = req.body.email;

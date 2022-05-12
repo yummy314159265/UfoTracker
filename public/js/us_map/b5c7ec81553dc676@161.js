@@ -78,14 +78,16 @@ md`Map by Mike Bostock: [Zoom to Bounding Box](https://observablehq.com/@d3/zoom
 
 function _comments(html){return(
   html`
+    <div class="content container" id="comment-container">
+        <ul class="container" id="comment-list">
+        </ul>
+    </div>
+
     <div class="container" id="comments">
       <div class="field container">
         <div class="control">
           <textarea class="textarea" name="comment-body" placeholder="Leave a comment"></textarea>
         </div>
-      </div>
-
-      <div class="content container" id="comment-list">
       </div>
 
       <div class="field is-grouped is-grouped-right container">
@@ -96,7 +98,6 @@ function _comments(html){return(
           <button class="button is-link" id="comment-submit">Submit</button>
         </div>
       </div>
-
     </div>
   `
 )}

@@ -38,7 +38,7 @@ body {
     display: inline;
 }
 
-.field, .content {
+.field, .content, #comment-list {
     width: 40%;
 }
 
@@ -60,4 +60,11 @@ body {
 
 #comment-list {
     color: white;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#comment-container {
+    display: none;
 }
