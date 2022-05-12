@@ -12,15 +12,26 @@ Comments.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    
+    sighting_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'sightings',
+        key: 'id',
+      },
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,

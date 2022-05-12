@@ -43,18 +43,22 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
+    console.log(dbUserData)
+
+    await req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.email = req.body.email;
+      req.session.userId = dbUserData.id
 
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
-    });
+    })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
-  });
+});
 
 router.put('/update/:id', async (req, res) => {
   try {
@@ -91,7 +95,6 @@ router.delete('/delete/:id', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  console.log(req.session.loggedIn)
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
