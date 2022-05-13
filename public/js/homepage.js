@@ -24,9 +24,22 @@ const stateSightingsHandler = async (event) => {
     index = 0;
 
     setTimeout(() => modalEl.classList.add('is-active'), 500);
+    document.querySelector('textarea[name="comment-body"]').value = '';
+
+    if (sightingData.length===0) {
+        hideCommentTextArea();
+        displaySightingsModal([{
+            city: 'No sightings found',
+            date_time: '',
+            summary: '',
+            shape: '',
+        }]);
+        return;
+    }
 
     displaySightingsModal(sightingData);
     getSightingCommentsHandler(sightingData[index].id);
+    displayCommentTextArea();
 }
 
 const displaySightingsModal = (d) => {
@@ -95,6 +108,7 @@ const getSightingCommentsHandler = async (sightingId) => {
 }
 
 const displaySightingComments = (d) => {
+
     console.log(d)
     const commentListEl = document.querySelector('#comment-list');
     const commentContainerEl = document.querySelector('#comment-container');
@@ -109,39 +123,65 @@ const displaySightingComments = (d) => {
 
     d.forEach(comment => {
         const commentEl = document.createElement('li');
-        const userIdEl = document.createElement('div');
-        const bodyEl = document.createElement('div');
+        const boxEl = document.createElement('box');
+        const contentEl = document.createElement('content')
+        const userIdEl = document.createElement('h4');
+        const bodyEl = document.createElement('p');
 
-        userIdEl.textContent = `User ${comment.user_id}`;
+        boxEl.classList.add('box');
+        contentEl.classList.add('content');
+
+        userIdEl.textContent = `${comment.user.email}`;
         bodyEl.textContent = comment.body;
 
-        commentEl.append(userIdEl);
-        commentEl.append(bodyEl);
+        contentEl.append(bodyEl);
+        contentEl.append(userIdEl);
+        boxEl.append(contentEl);
+        commentEl.append(boxEl)
         commentListEl.append(commentEl);
     })
+}
+
+const displayCommentTextArea = () => {
+    document.querySelector('#comment-textarea').setAttribute('style', 'display: block');
+    const body = document.querySelector('textarea[name="comment-body"]');
+    const commentSubmitBtn = document.querySelector('#comment-submit');
+    
+    body.addEventListener('input', () => {
+        if (body.value) {
+            commentSubmitBtn.disabled = false;
+        } else {
+            commentSubmitBtn.disabled = true;
+        }
+    });
+}
+
+const hideCommentTextArea = () => {
+    document.querySelector('#comment-textarea').setAttribute('style', 'display: none');
 }
 
 const commentFormHandler = async function(event){
     event.preventDefault();
 
-    const body = document.querySelector('textarea[name="comment-body"]').value;
+    const body = document.querySelector('textarea[name="comment-body"]');
 
-    if (body && sightingData[index].id) {
-        await fetch('/api/comments', {
-            method: 'POST',
-            body: JSON.stringify({
-                body,
-                sightingId: sightingData[index].id,
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+    const response = await fetch('/api/comments', {
+        method: 'POST',
+        body: JSON.stringify({
+            body: body.value,
+            sightingId: sightingData[index].id,
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 
-        getSightingCommentsHandler(sightingData[index].id);
-    } else {
-        console.error('Unable to post comment')
+    if (response.redirected === true) {
+        return window.location.href = response.url;
     }
+
+    getSightingCommentsHandler(sightingData[index].id);
+    body.value = '';
 };
 
 document.body.addEventListener('click', (event) => {
