@@ -3,6 +3,7 @@ const loginFormHandler = async (event) => {
 
     const email = document.querySelector('#userEmail').value.trim();
     const password = document.querySelector('#userPass').value.trim();
+    const loginMessage = document.querySelector('.login-message');
 
     if (email && password) {
         const response = await fetch('/api/user/login', {
@@ -12,9 +13,12 @@ const loginFormHandler = async (event) => {
         });
 
         if (response.ok) {
+            loginMessage.classList.add('has-text-success');
+            loginMessage.textContent = 'Success!';
             document.location.replace('/');
         } else {
-            alert('Failed to log in.');
+            loginMessage.classList.add('has-text-danger');
+            loginMessage.textContent = 'Invalid login';
         }
     }
 };
