@@ -2,6 +2,25 @@
 
 <div id="sightings-modal" class="modal">
   <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="level modal-card-title"><span class="level-left" id="city"></span> <span class="level-right" id="time"></span></p>
+    </header>
+    <section class="modal-card-body">
+        <p>UFO type: <span id="shape"></span></p>
+        <p>Description: <span id="summary"></span></p> 
+    </section>
+    <footer class="modal-card-foot">
+      <div class="sightings-nav" id="previous-sighting">&lt; previous</div>
+      <a href="#comment" id="leave-comment">Leave a comment</a>
+      <div class="sightings-nav" id="next-sighting">next &gt;</div>
+    </footer>
+  </div>
+</div>
+
+{{!-- 
+<div id="sightings-modal" class="modal">
+  <div class="modal-background"></div>
 
   <div class="modal-content">
     <div class="box">
@@ -10,15 +29,14 @@
         <p id="summary"></p>
         <p id="time"></p>        
         <div class="user-action">
-        <div class="sightings-nav" id="previous-sighting">&lt; previous</div>
-        <div class="sightings-nav" id="next-sighting">next &gt;</div>
-        <a href="#comments" id="leave-comment">Leave a comment</a>
+
         </div>
     </div>
   </div>
 
   <button class="modal-close is-large" aria-label="close"></button>
-</div>
+</div> 
+--}}
 
 <script src="/js/helpers/sightings-modal.js"></script>
 <script type="module" src="/js/d3-observable.js"></script>

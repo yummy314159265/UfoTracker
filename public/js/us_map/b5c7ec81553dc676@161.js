@@ -72,31 +72,40 @@ function _chart(d3,topojson,us,path)
   return svg.node();
 }
 
-function _1(md){return(
-md`Map by Mike Bostock: [Zoom to Bounding Box](https://observablehq.com/@d3/zoom-to-bounding-box)`
+function _1(html){return(
+html`<p id="map-credit">Map by Mike Bostock: <a href="https://observablehq.com/@d3/zoom-to-bounding-box">Zoom to Bounding Box</a></p>`
 )}
 
 function _comments(html){return(
   html`
-    <div class="container" id="comments">
+    <div class="content container" id="comment-container">
+      <ul class="container" id="comment-list">
+        <li>
+          <div class="box">
+            <div class="content">
+
+              <strong>John Smith</strong>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container" id="comment-textarea">
       <div class="field container">
         <div class="control">
-          <textarea class="textarea" name="comment-body" placeholder="Leave a comment"></textarea>
+          <textarea class="textarea" name="comment-body" placeholder="Leave a comment" id="comment"></textarea>
         </div>
-      </div>
-
-      <div class="content container" id="comment-list">
       </div>
 
       <div class="field is-grouped is-grouped-right container">
         <div class="control">
-          <button class="button is-link is-light">Cancel</button>
-        </div>
-        <div class="control">
-          <button class="button is-link" id="comment-submit">Submit</button>
+          <button class="button is-link" id="comment-submit" disabled>Submit</button>
         </div>
       </div>
-
     </div>
   `
 )}

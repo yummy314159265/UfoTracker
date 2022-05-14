@@ -21,13 +21,6 @@ body {
     font-family: 'Orbitron', sans-serif;
 }
 
-.observablehq p {
-    color: white;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-}
-
 .observablehq--inspect {
     display: none;
 }
@@ -38,26 +31,52 @@ body {
     display: inline;
 }
 
-.field, .content {
-    width: 40%;
-}
-
 .login-input {
     margin-top: 400px;
+}
+
+.modal-card-head {
+    background-color: black;
+    padding: 16px;
+}
+
+.modal-card-body {
+    color: white;
+    background-color: #444;
+}
+
+.modal-card-foot {
+    color: white;
+    background-color: #444;
+    justify-content: space-between;
+}
+
+.field{
+    width: 50%;
+}
+
+.box {
+    background-color: #444;
+    color: white;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+}
+
+.box h4 {
+    color: #15fc12;
+    text-align: right;
+    margin-bottom: 3px;
 }
 
 #login, #logout {
     cursor: pointer;
 }
 
-#city {
+#city, #time {
+    color: #15fc12;
     font-size: 6 rem;
     font-weight: bold;
     font-family: 'Orbitron', sans-serif;
-    background-color: black;
-    color: #15fc12;
-    padding: 16px;
-    
 }
 
 #previous-sighting,#next-sighting {
@@ -71,9 +90,28 @@ body {
 
 #leave-comment {
     display: flex;
-    justify-content: flex-end;
+    color: #15fc12;
+    font-family: 'Orbitron', sans-serif;
 }
 
 #comment-list {
     color: white;
+    list-style: none;
+    margin: 0 auto;
+    width: 70%;
+}
+
+#comment-container {
+    display: none;
+}
+
+#comment-textarea {
+    display: none;
+}
+
+#map-credit {
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
